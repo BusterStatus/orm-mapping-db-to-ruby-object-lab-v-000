@@ -38,14 +38,14 @@ class Student
     end.first
   end
   
-  def self.all_students_in_grade_9 (grade)
+  def self.all_students_in_grade_9
     sql = <<-SQL
       SELECT *
       FROM students
       WHERE grade = ?
     SQL
     
-    DB[:conn].execute(sql, name).map do |row|
+    DB[:conn].execute(sql, 9).map do |row|
       self.new_from_db(row)
     end
   end
